@@ -5,16 +5,16 @@ word_set = {'python', 'java', 'kotlin', 'javascript'}
 lives = 8
 
 
-def hide_word(word, letter_set):
+def hide_word(word: str, letter_set: set) -> str:
     '''
     Returns a string with hidden letters that are not in the set but are in the word.
 
-    Example:  letter_set = {a, o , p, w}'; word = 'apple' ; return 'app--'
+    Example:  letter_set = {a, o, p, w}'; word = 'apple' ; return 'app--'
     '''
     return ''.join([letter if letter in letter_set else '-' for letter in word])
 
 
-def check_input(input_string, letter_set):
+def check_input(input_string: str, letter_set: set) -> bool:
     '''Return True if the input data is valid.'''
 
     # Check length of str
@@ -33,8 +33,8 @@ def check_input(input_string, letter_set):
     return True
 
 
-def game(lives):
-    '''Body of game'''
+def game(lives: int) -> None:
+    """Body of game"""
     choice_word = choice(tuple(word_set))  # get random word
     letter_set = set()
 
@@ -60,12 +60,17 @@ def game(lives):
         print('You lost!')
 
 
-print('H A N G M A N')
-while True:
-    status = input('Type "play" to play the game, "exit" to quit:')
-    if status == 'exit':
-        break
-    elif status == 'play':
-        game(lives=lives)
-    else:
-        continue
+def main() -> None:
+    print('H A N G M A N')
+    while True:
+        status = input('Type "play" to play the game, "exit" to quit:')
+        if status == 'exit':
+            break
+        elif status == 'play':
+            game(lives=lives)
+        else:
+            continue
+
+
+if __name__ == "__main__":
+    main()
